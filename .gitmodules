@@ -1,0 +1,6 @@
+[submodule "lib/phpMobi"]
+	path = lib/phpMobi
+	url = https://github.com/raiju/phpMobi.git
+[submodule "lib/php-markdown"]
+	path = lib/php-markdown
+	url = https://github.com/michelf/php-markdown.git
