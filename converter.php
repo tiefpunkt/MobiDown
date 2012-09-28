@@ -1,14 +1,27 @@
 <?php
-include_once "./lib/php-markdown/markdown.php";
-include_once("./lib/phpMobi/MOBIClass/MOBI.php");
+require_once("./lib/php-markdown/markdown.php");
+require_once("./lib/htmlpurifier/library/HTMLPurifier.auto.php");
+require_once("./lib/phpMobi/MOBIClass/MOBI.php");
 
+// Without content, abort.
 if (!isset($_POST["content"])) {
 	echo "Error. No content.";
 	exit();
 }
 
-$html = "<html><body>".Markdown($_POST["content"])."</body></html>";
+// convert Markdown input to html
+$dirty_html = Markdown($_POST["content"]);
 
+
+
+// sanitize html
+$config = HTMLPurifier_Config::createDefault();
+$purifier = new HTMLPurifier($config);
+$clean_html = $purifier->purify($dirty_html);
+
+$full_html = "<html>\n<body>\n".$clean_html."\n</body>\n</html>";
+
+// eBook options
 $options = array(
     "title" => "Local document",
     "author" => "MobiDown",
@@ -19,7 +32,7 @@ $options = array(
 $mobi = new MOBI();
 
 //Set the data
-$mobi->setData($html);
+$mobi->setData($full_html);
 $mobi->setOptions($options);
 
 //Save the mobi file locally
