@@ -1,12 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
 	<title>MobiDown - Markdown to eBook converter</title>
+	<!-- Bootstrap -->
+	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="main.css" rel="stylesheet">
 </head>
 <body>
-	<h1>MobiDown</h1>
-	<form action="./converter.php" method="post">
-		<textarea name="content"></textarea><br/>
-		<input type="submit" />
-	</form>
+	<div class="container">
+		<header>
+			<h1>MobiDown <small>Create your own eBook from Markdown in seconds.</small></h1>
+		</header>
+		
+		<p>MobiDown allows you to read Markdown on your Kindle eBook reader. Just copy your Markdown-formatted text, aticle or even complete book into the textbox down below, click the "Create eBook" button, and MobiDown will generate a .mobi eBook which you can the put onto your Kindle.</p>
+		
+		
+		<form action="./converter.php" method="post">
+				<textarea name="content"></textarea><br/>
+				<button type="submit" class="btn btn-primary"><i class="icon-book icon-white"></i> Create eBook</button>
+		</form>
+	</div>
 </body>
 </html>
