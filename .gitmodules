@@ -7,3 +7,6 @@
 [submodule "lib/htmlpurifier"]
 	path = lib/htmlpurifier
 	url = git://repo.or.cz/htmlpurifier.git
+[submodule "lib/phpFloodGate"]
+	path = lib/phpFloodGate
+	url = https://github.com/tiefpunkt/phpFloodGate.git

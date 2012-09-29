@@ -1,4 +1,9 @@
 <?php
+// Avoid flooding
+require_once("./lib/phpFloodGate/floodgate.php");
+passFloodGate(false);
+
+// Remaining libraries
 require_once("./lib/php-markdown/markdown.php");
 require_once("./lib/htmlpurifier/library/HTMLPurifier.auto.php");
 require_once("./lib/phpMobi/MOBIClass/MOBI.php");
@@ -9,12 +14,10 @@ if (!isset($_POST["content"])) {
 	exit();
 }
 
-// convert Markdown input to html
+// Convert Markdown input to html
 $dirty_html = Markdown($_POST["content"]);
 
-
-
-// sanitize html
+// Sanitize html
 $config = HTMLPurifier_Config::createDefault();
 $purifier = new HTMLPurifier($config);
 $clean_html = $purifier->purify($dirty_html);
@@ -28,13 +31,13 @@ $options = array(
     "subject" => "Subject"
 );
 
-//Create the MOBI object
+// Create the MOBI object
 $mobi = new MOBI();
 
-//Set the data
+// Set the data
 $mobi->setData($full_html);
 $mobi->setOptions($options);
 
-//Save the mobi file locally
+// Offer file for download
 $mobi->download("MobiDown.mobi");
 ?>
