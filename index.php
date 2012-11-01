@@ -20,7 +20,13 @@
 				<button type="submit" class="btn btn-primary"><i class="icon-book icon-white"></i> Create eBook</button>
 		</form>
 		<footer>
-			MobiDown v0.2 by <a href="http://twitter.com/tiefpunkt">tiefpunkt</a> | <a href="http://github.com/tiefpunkt/MobiDown">GitHub Repository</a>
+			<?php
+					if (is_file('./footer.inc.php')) {
+						include('./footer.inc.php');
+					} else {
+						echo "MobiDown v0.2 by <a href=\"http://twitter.com/tiefpunkt\">tiefpunkt</a> | <a href=\"http://github.com/tiefpunkt/MobiDown\">GitHub Repository</a>";
+					}
+				?>
 		</footer>
 	</div>
 </body>
