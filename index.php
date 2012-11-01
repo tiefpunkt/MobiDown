@@ -5,6 +5,11 @@
 	<!-- Bootstrap -->
 	<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="main.css" rel="stylesheet">
+	<?php
+		if (is_file('./header.inc.php')) {
+			include('./header.inc.php');
+		}
+	?>
 </head>
 <body>
 	<div class="container">
